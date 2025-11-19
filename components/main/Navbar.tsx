@@ -1,7 +1,7 @@
 "use client";
 import { Socials } from "@/constants";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -22,9 +22,18 @@ const itemVariants = {
   hidden: { opacity: 0, x: -15 },
   visible: { opacity: 1, x: 0 },
 };
-
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  useEffect(()=>{
+    if (open) {
+      document.body.style.overflow = "hidden"
+    }else{
+      document.body.style.overflow = "auto"
+    }
+    return() =>{
+      document.body.style.overflow = "auto"
+    }
+  },[open])
 
   return (
     <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001417] backdrop-blur-md z-250 px-6 md:px-10">
@@ -32,17 +41,17 @@ const Navbar = () => {
       <div className="w-full h-full flex items-center justify-between">
         {/* Logo */}
         <a href="#about-me" className="flex items-center">
-          <span className="font-bold ml-2 text-gray-300 hidden md:block">
-            Luka Dev
+          <span className="font-bold ml-2 text-gray-300 md:block">
+            Portfolio
           </span>
         </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex w-[500px] items-center justify-between md:mr-20">
-          <div className="flex items-center justify-between w-full border border-[#7042f861] bg-[#0300145e] px-[20px] py-[10px] rounded-full text-gray-200">
-            <a href="#about-me" className="cursor-pointer hover:opacity-70 transition">About me</a>
-            <a href="#skills" className="cursor-pointer hover:opacity-70 transition">Skills</a>
-            <a href="#projects" className="cursor-pointer hover:opacity-70 transition">Projects</a>
+          <div className="flex items-center justify-between w-full px-5 py-2.5  text-white">
+            <a href="#about-me" className="cursor-pointer font-bold hover:opacity-70 transition">About me</a>
+            <a href="#skills" className="cursor-pointer font-bold hover:opacity-70 transition">Skills</a>
+            <a href="#projects" className="cursor-pointer font-bold hover:opacity-70 transition">Projects</a>
           </div>
         </div>
 
@@ -70,45 +79,73 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            variants={menuVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="md:hidden mt-4 bg-[#0300148a] backdrop-blur-md rounded-xl py-4 px-6 flex flex-col gap-4 text-gray-200 border border-[#7042f861]"
-          >
-            {["about-me", "skills", "projects"].map((link) => (
-              <motion.a
-                key={link}
-                variants={itemVariants}
-                href={`#${link}`}
-                onClick={() => setOpen(false)}
-                className="cursor-pointer text-lg hover:scale-105 transition-transform"
-              >
-                {link.replace("-", " ").replace(/\b\w/g, (c) => c.toUpperCase())}
-              </motion.a>
-            ))}
+{/* Mobile Menu */}
+<AnimatePresence>
+  {open && (
+    <motion.div
+      variants={menuVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="
+        md:hidden 
+        absolute top-0 right-0 
+        w-full h-screen 
+        p-6 pt-10 
+        flex flex-col items-center gap-8
+        bg-black
+ 
+        border-b border-white/10
+        rounded-b-2xl
+        shadow-[0_10px_40px_rgba(0,0,0,0.4)]
+        text-gray-200
+      "
+    >
+      {/* CLOSE BUTTON */}
+      <div className="w-full flex justify-end pr-2">
+        <IoClose
+          onClick={() => setOpen(false)}
+          className="text-4xl text-gray-300 hover:text-white transition"
+        />
+      </div>
 
-            {/* Socials */}
-            <motion.div
-              variants={itemVariants}
-              className="flex gap-4 mt-4"
-            >
-              {Socials.map((social) => (
-                <Image
-                  src={social.src}
-                  alt={social.name}
-                  key={social.name}
-                  width={22}
-                  height={22}
-                />
-              ))}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Menu Items */}
+      {["about-me", "skills", "projects"].map((link) => (
+        <motion.a
+          key={link}
+          variants={itemVariants}
+          href={`#${link}`}
+          onClick={() => setOpen(false)}
+          className="
+            cursor-pointer 
+            text-3xl 
+            font-semibold
+            tracking-wide
+            hover:scale-110 
+            transition-transform
+            text-white
+          "
+        >
+          {link.replace("-", " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+        </motion.a>
+      ))}
+
+      {/* Social Icons */}
+      <motion.div variants={itemVariants} className="flex gap-6 mt-4">
+        {Socials.map((social) => (
+          <Image
+            src={social.src}
+            alt={social.name}
+            key={social.name}
+            width={26}
+            height={26}
+            className="opacity-90 hover:opacity-100 transition"
+          />
+        ))}
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </div>
   );
 };

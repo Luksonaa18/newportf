@@ -20,24 +20,25 @@ const HeroContent = () => {
         items-center justify-center 
         px-6 md:px-20 
         mt-24 md:mt-40 
-        w-full z-[20] gap-10
+        sm:mt-10
+        w-full z-20 gap-10
       "
     >
       {/* LEFT SIDE */}
-      <div className="w-full flex flex-col gap-5 text-start">
+      <div className="w-full  flex flex-col gap-5 text-start">
         
         {/* Small Tag */}
         <motion.div
           variants={slideInFromTop}
           className="
             Welcome-box 
-            py-[8px] px-[7px] 
+            py-2 px-[7px] 
             border border-[#7042f88b] 
             opacity-[0.9] 
             flex items-center w-fit
           "
         >
-          <SparklesIcon className="text-[#b49bff] mr-[10px] h-5 w-5" />
+          <SparklesIcon className="text-[#b49bff] mr-2.5 h-5 w-5" />
           <h1 className="Welcome-text text-[12px] md:text-[13px]">
             Fullstack Developer Portfolio
           </h1>
