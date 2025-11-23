@@ -102,6 +102,7 @@ const Navbar = () => {
         rounded-b-2xl
         shadow-[0_10px_40px_rgba(0,0,0,0.4)]
         text-gray-200
+        z-1212121212121212
       "
     >
       {/* CLOSE BUTTON */}
