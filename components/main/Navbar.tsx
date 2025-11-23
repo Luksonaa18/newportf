@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const menuVariants = {
   hidden: { opacity: 0, y: -20 },
@@ -56,8 +57,9 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Socials */}
-        <div className="hidden md:flex flex-row gap-5">
+        <div className="hidden cursor-pointer md:flex flex-row gap-5">
           {Socials.map((social) => (
+        <Link href={social.href} key={social.name}>
             <Image
               src={social.src}
               alt={social.name}
@@ -65,6 +67,7 @@ const Navbar = () => {
               width={24}
               height={24}
             />
+        </Link>
           ))}
         </div>
 

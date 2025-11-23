@@ -1,7 +1,7 @@
 "use client";
-import React from "react";
-import { RxDiscordLogo, RxGithubLogo } from "react-icons/rx";
-import { FaYoutube, FaInstagram, FaLinkedin } from "react-icons/fa";
+import Link from "next/link";
+import { RxGithubLogo } from "react-icons/rx";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -15,7 +15,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="w-full bg-[#0F011F] text-gray-200 py-12 px-6">
+    <footer className="w-full relative z-12121212 bg-[#0F011F] text-gray-200 py-12 px-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         
         {/* Community Section */}
@@ -28,18 +28,15 @@ const Footer = () => {
           className="flex flex-col items-center md:items-start"
         >
           <h2 className="text-xl font-bold mb-4">Community</h2>
-          <a
-            href="#"
-            className="flex items-center gap-2 my-2 hover:text-purple-400 transition-colors"
+
+          <Link
+            href="https://github.com/Luksonaa18"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 my-2 hover:text-purple-400 transition-colors cursor-pointer"
           >
             <RxGithubLogo size={20} /> Github
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-2 my-2 hover:text-purple-400 transition-colors"
-          >
-            <RxDiscordLogo size={20} /> Discord
-          </a>
+          </Link>
         </motion.div>
 
         {/* Social Media Section */}
@@ -52,19 +49,23 @@ const Footer = () => {
           className="flex flex-col items-center md:items-start"
         >
           <h2 className="text-xl font-bold mb-4">Social Media</h2>
-          <a
+
+          <Link
             href="#"
-            className="flex items-center gap-2 my-2 hover:text-pink-500 transition-colors"
+            className="flex items-center gap-2 my-2 hover:text-pink-500 transition-colors cursor-pointer"
           >
             <FaInstagram size={20} /> Instagram
-          </a>
-          <a
+          </Link>
+
+          <Link
             href="#"
-            className="flex items-center gap-2 my-2 hover:text-blue-500 transition-colors"
+            className="flex items-center gap-2 my-2 hover:text-blue-500 transition-colors cursor-pointer"
           >
             <FaLinkedin size={20} /> Linkedin
-          </a>
+          </Link>
         </motion.div>
+
+        {/* About */}
         <motion.div
           custom={2}
           initial="hidden"
@@ -74,24 +75,21 @@ const Footer = () => {
           className="flex flex-col items-center md:items-start"
         >
           <h2 className="text-xl font-bold mb-4">About</h2>
-          <a
-            href="#"
-            className="my-2 hover:text-purple-400 transition-colors"
-          >
+
+          <Link href="#" className="my-2 hover:text-purple-400 transition-colors cursor-pointer">
             Become a Sponsor
-          </a>
-          <a
-            href="#"
-            className="my-2 hover:text-purple-400 transition-colors"
-          >
+          </Link>
+
+          <Link href="#" className="my-2 hover:text-purple-400 transition-colors cursor-pointer">
             Learn About Me
-          </a>
-          <a
+          </Link>
+
+          <Link
             href="mailto:lukazhozhadze53@gmail.com"
-            className="my-2 hover:text-purple-400 transition-colors"
+            className="my-2 hover:text-purple-400 transition-colors cursor-pointer"
           >
             lukazhozhadze53@gmail.com
-          </a>
+          </Link>
         </motion.div>
       </div>
 
@@ -104,7 +102,7 @@ const Footer = () => {
       >
         &copy; {new Date().getFullYear()} Luka Zhozhadze. All rights reserved.
       </motion.div>
-    </div>
+    </footer>
   );
 };
 
