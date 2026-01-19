@@ -1,25 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-interface ResponsiveSize {
-  width: number;
-  height: number;
-}
-
 interface ImgProps {
-  src: any;
-  mobile: ResponsiveSize;
-  desktop: ResponsiveSize;
-  className?: string;
+  phone: any;
+  laptop: any;
 }
 
 interface Props {
   title: string;
   description: string;
   href: string;
-  images: ImgProps[];
+  images: ImgProps;
 }
 
 const ProjectCard = ({ title, description, images, href }: Props) => {
@@ -28,71 +22,71 @@ const ProjectCard = ({ title, description, images, href }: Props) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="block w-full"
+      aria-label={`Open project ${title}`}
+      className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 rounded-2xl"
     >
-      <motion.div
+      <motion.article
         whileHover={{ scale: 1.03 }}
-        transition={{ type: "spring", stiffness: 180 }}
-        className="relative overflow-hidden rounded-2xl shadow-xl border border-[#33146e] bg-gradient-to-b from-[#17002b] to-[#0b0016] p-6 cursor-pointer"
+        transition={{ type: "spring", stiffness: 160, damping: 15 }}
+        className="
+          relative overflow-hidden
+          rounded-2xl
+          border border-purple-800/40
+          bg-gradient-to-b from-[#17002b] to-[#0b0016]
+          p-6
+          shadow-xl
+        "
       >
-        {/* IMAGES */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-          className="
-            flex flex-col md:flex-row
-            items-center justify-center 
-            gap-4 md:gap-6
-          "
-        >
-          {images.map((img, index) => (
-            <div key={index} className="flex flex-col items-center">
-              
-              {/* MOBILE VIEW */}
-              <div className="block md:hidden">
-                <Image
-                  src={img.src}
-                  alt={title}
-                  width={img.mobile.width}
-                  height={img.mobile.height}
-                  className={`
-                    rounded-xl shadow-lg 
-                    object-contain 
-                    ${img.className || ""}
-                  `}
-                />
-              </div>
+        {/* IMAGE */}
+        <div className="relative w-full h-[220px] md:h-[260px]">
+          {/* MOBILE IMAGE */}
+          <Image
+            src={images.phone}
+            alt={`${title} mobile preview`}
+            fill
+            sizes="(max-width: 768px) 100vw, 0"
+            className="
+              object-contain
+              rounded-xl
+              md:hidden
+            "
+            priority
+          />
 
-              {/* DESKTOP VIEW */}
-              <div className="hidden md:block">
-                <Image
-                  src={img.src}
-                  alt={title}
-                  width={img.desktop.width}
-                  height={img.desktop.height}
-                  className={`
-                    rounded-xl shadow-xl 
-                    object-contain
-                    ${img.className || ""}
-                  `}
-                />
-              </div>
-
-            </div>
-          ))}
-        </motion.div>
+          {/* DESKTOP IMAGE */}
+          <Image
+            src={images.laptop}
+            alt={`${title} desktop preview`}
+            fill
+            sizes="(min-width: 768px) 400px"
+            className="
+              object-contain
+              rounded-xl
+              hidden md:block
+            "
+          />
+        </div>
 
         {/* TEXT */}
-        <div className="mt-6 text-center md:text-left">
-          <h1 className="text-2xl font-bold text-white tracking-wide">
+        <div className="mt-6">
+          <h2 className="text-xl md:text-2xl font-semibold text-white">
             {title}
-          </h1>
-          <p className="mt-2 text-gray-300 leading-relaxed text-sm md:text-base">
+          </h2>
+          <p className="mt-2 text-gray-300 text-sm md:text-base leading-relaxed line-clamp-3">
             {description}
           </p>
         </div>
-      </motion.div>
+
+        {/* Hover glow */}
+        <div className="
+          pointer-events-none
+          absolute inset-0
+          rounded-2xl
+          opacity-0 hover:opacity-100
+          transition-opacity
+          bg-gradient-to-tr from-purple-600/10 via-transparent to-indigo-600/10
+        " />
+      </motion.article>
     </a>
   );
 };

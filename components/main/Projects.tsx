@@ -4,69 +4,60 @@ import ProjectCard from "../sub/ProjectCard";
 
 import phone1 from "@/public/Screenshot 2025-11-18 185501-portrait.png";
 import laptop1 from "@/public/Screenshot 2025-11-18 185539-front.png";
-
-import phone2 from "@/public/phone.png";
+import phone2 from "@/public/findit.png";
 import phone3 from "@/public/phone1.png";
-import laptop2 from "@/public/laptop.png";
+import laptop2 from "@/public/finditpro.png";
 import laptop3 from "@/public/laptop1.png";
+import phone4 from "@/public/bags1.png"
+import laptop4 from "@/public/bags.png"
 
 const Projects = () => {
   return (
-    <div
+    <section
       id="projects"
-      className="h-full mb-20 relative z-100 w-full flex flex-col md:flex-row gap-10 px-10"
+      className="relative z-10 w-full px-6 md:px-10 mb-20"
     >
-      {/* PROJECT 1 */}
-      <ProjectCard
-        href="https://bobsnail.vercel.app/"
-        title="Halloween Full-Stack Project"
-        description="This project is enhanced with modern design which is still in process of deployment"
-        images={[
-          {
-            src: phone1,
-            mobile: { width: 100, height: 10 },
-            desktop: { width: 100, height: 260 },
-          },
-          {
-            src: laptop1,
-            mobile: { width: 100, height: 10 },
-            desktop: { width: 330, height: 260 },
-          },
-        ]}
-      />
-      <ProjectCard
-        href="https://twitter-kappa-jade.vercel.app/"
-        title="Twitter Clone"
-        description="Cloned twitter before knowing any backend :) using firebase authentication"
-        images={[
-          {
-            src: phone3,
-            mobile: { width: 100, height: 10 },
-            desktop: { width: 130, height: 260 },
-          },
-          {
-            src: laptop3,
-            mobile: { width: 180, height: 10 },
-            desktop: { width: 330, height: 260 },
-          },
-        ]}
-      />
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+        <ProjectCard
+          href="https://bobsnail.vercel.app/"
+          title="Halloween Full-Stack Project"
+          description="Full-stack application featuring modern UI, authentication, and responsive layouts."
+          images={{
+            phone: phone1,
+            laptop: laptop1,
+          }}
+        />
 
-      {/* PROJECT 2 */}
-      <ProjectCard
-        href="https://bags-prop.vercel.app/"
-        title="Bags Website"
-        description="Coming soon"
-        images={[
+        <ProjectCard
+          href="https://twitter-kappa-jade.vercel.app/"
+          title="Twitter Clone"
+          description="Pixel-perfect Twitter clone with Firebase authentication and responsive UI."
+          images={{
+            phone: phone3,
+            laptop: laptop3,
+          }}
+        />
 
-          {
-            src: laptop2,
-            mobile: { width: 100, height: 10 },
-            desktop: { width: 330, height: 260 },
-          },
-        ]}
-      />
-    </div>
+        <ProjectCard
+          href="https://twitter-kappa-jade.vercel.app/"
+          title="Find It"
+          description="Full-stack platform helping users find lost items using NestJS, Next.js, TypeScript and AWS for images. Featuring modern UI, authentication, and responsive layouts."
+          images={{
+            phone: phone2,
+            laptop: laptop2,
+          }}
+        />
+        <ProjectCard
+          href="https://twitter-kappa-jade.vercel.app/"
+          title="LuxBags"
+          description="Full-stack platform for online bussiness which is in process of making"
+          images={{
+            phone: phone4,
+            laptop: laptop4,
+          }}
+        />
+      </div>
+    </section>
   );
 };
 

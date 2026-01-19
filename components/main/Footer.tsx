@@ -51,14 +51,14 @@ const Footer = () => {
           <h2 className="text-xl font-bold mb-4">Social Media</h2>
 
           <Link
-            href="#"
+            href="https://www.instagram.com/lukssonaa1122/"
             className="flex items-center gap-2 my-2 hover:text-pink-500 transition-colors cursor-pointer"
           >
             <FaInstagram size={20} /> Instagram
           </Link>
 
           <Link
-            href="#"
+            href="https://www.linkedin.com/in/luka-zhozhadze-143259341/"
             className="flex items-center gap-2 my-2 hover:text-blue-500 transition-colors cursor-pointer"
           >
             <FaLinkedin size={20} /> Linkedin
