@@ -39,7 +39,7 @@ const Projects = () => {
         />
 
         <ProjectCard
-          href="https://twitter-kappa-jade.vercel.app/"
+          href="https://findit-livid.vercel.app/"
           title="Find It"
           description="Full-stack platform helping users find lost items using NestJS, Next.js, TypeScript and AWS for images. Featuring modern UI, authentication, and responsive layouts."
           images={{
