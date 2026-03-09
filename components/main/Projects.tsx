@@ -10,6 +10,8 @@ import laptop2 from "@/public/finditpro.png";
 import laptop3 from "@/public/laptop1.png";
 import phone4 from "@/public/bags1.png"
 import laptop4 from "@/public/bags.png"
+import laptop5 from '@/public/nibb.png'
+import phone5 from '@/public/nibb1.png'
 
 const Projects = () => {
   return (
@@ -54,6 +56,15 @@ const Projects = () => {
           images={{
             phone: phone4,
             laptop: laptop4,
+          }}
+        />
+        <ProjectCard
+          href="https://twitter-kappa-jade.vercel.app/"
+          title="Crevo"
+          description="Full-stack platform 2 way marketing service for companies and content creators. role based controll over post and authorization.used gsap animation library for scroll triggers and tanstack query for fetching and mutations"
+          images={{
+            phone: phone5,
+            laptop: laptop5,
           }}
         />
       </div>
