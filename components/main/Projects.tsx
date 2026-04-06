@@ -8,17 +8,16 @@ import phone2 from "@/public/findit.png";
 import phone3 from "@/public/phone1.png";
 import laptop2 from "@/public/finditpro.png";
 import laptop3 from "@/public/laptop1.png";
-import phone4 from "@/public/bags1.png"
-import laptop4 from "@/public/bags.png"
-import laptop5 from '@/public/nibb.png'
-import phone5 from '@/public/nibb1.png'
+import phone4 from "@/public/bags1.png";
+import laptop4 from "@/public/bags.png";
+import laptop5 from "@/public/nibb.png";
+import laptop6 from "@/public/Screenshot 2026-04-06 at 21.47.02-front.png";
+import phone5 from "@/public/nibb1.png";
+import phone6 from "@/public/Screenshot 2026-04-06 at 21.47.57-portrait.png";
 
 const Projects = () => {
   return (
-    <section
-      id="projects"
-      className="relative z-10 w-full px-6 md:px-10 mb-20"
-    >
+    <section id="projects" className="relative z-10 w-full px-6 md:px-10 mb-20">
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
         <ProjectCard
           href="https://bobsnail.vercel.app/"
@@ -65,6 +64,15 @@ const Projects = () => {
           images={{
             phone: phone5,
             laptop: laptop5,
+          }}
+        />
+        <ProjectCard
+          href="https://dopamine-rework.vercel.app/"
+          title="Dopamine"
+          description="Frontend project with three js for Dopamine energy drink"
+          images={{
+            phone: phone6,
+            laptop: laptop6,
           }}
         />
       </div>
